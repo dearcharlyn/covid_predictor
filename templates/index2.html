@@ -1,0 +1,42 @@
+{% extends 'headerPage2.html' %}
+     {% block content%}
+    <h2>COVID-19 Predictor</h2>
+        <h3>Please enter details:</h3>
+        <br>
+         {% if covidval %}
+                <form method="post" enctype="multipart/form-data" action="updateCovidDatabase">
+                    {% else %}
+       <form method="post" enctype="multipart/form-data" action="predictCovidDisease">
+            {% endif %}
+
+     {% csrf_token %}
+         <div class="col-md-4 col-sm-4"><label for="fname">Breathing Problem:</label> </div> <input name="BreathingProblemVal" type="text" value={{temp.BreathingProblem}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Fever:</label> </div> <input type="text" id="lname" name="FeverVal" value={{temp.Fever}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="fname">Dry Cough:</label> </div> <input type="text" id="fname" name="DryCoughVal" value={{temp.DryCough}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Sore throat:</label> </div> <input type="text" id="lname" name="SorethroatVal" value={{temp.Sorethroat}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Running Nose:</label> </div> <input type="text" id="lname" name="RunningNoseVal" value={{temp.RunningNose}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Asthma:</label> </div> <input type="text" id="lname" name="AsthmaVal" value={{temp.Asthma}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Headache:</label> </div> <input type="text" id="lname" name="HeadacheVal" value={{temp.Headache}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">HeartDisease:</label> </div> <input type="text" id="lname" name="HeartDiseaseVal" value={{temp.HeartDisease}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Diabetes:</label> </div> <input type="text" id="lname" name="DiabetesVal" value={{temp.Diabetes}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Hypertension:</label> </div> <input type="text" id="lname" name="HypertensionVal" value={{temp.Hypertension}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Fatigue:</label> </div> <input type="text" id="lname" name="FatigueVal" value={{temp.Fatigue}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">AbroadTravel:</label> </div> <input type="text" id="lname" name="AbroadTravelVal" value={{temp.AbroadTravel}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Contact to COVID Patient:</label> </div> <input type="text" id="lname" name="ContactCovidPatientVal" value={{temp.ContactCovidPatient}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Attended Large Gathering:</label> </div> <input type="text" id="lname" name="AttendedLargeGatheringVal" value={{temp.AttendedLargeGathering}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Visited Public Places:</label> </div> <input type="text" id="lname" name="VisitedPublicVal" value={{temp.VisitedPublic}}><br><br>
+         <div class="col-md-4 col-sm-4"><label for="lname">Family Working in Public:</label> </div> <input type="text" id="lname" name="FamilyWorkingPublicVal" value={{temp.FamilyWorkingPublic}}><br><br>
+                <br>
+        {%  if covidval  %}
+         <h1>You are <i><u> {{covidval}} </u></i></h1>
+         <h3>If the response is good, please save it to the database by clicking the button below.
+         </h3>
+         <input type="hidden" id="lname" name="covidVal" value={{predictedval}}>
+         <input type="submit" value="Store to database" ></div>
+         {% else%}
+         <input type="submit" value="Submit" ></div>
+         {% endif %}
+
+        </form>
+        <br>
+     {% endblock %}
