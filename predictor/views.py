@@ -13,6 +13,7 @@ def predictCovidDisease(request):
     print(request)
     list = ['bp', 'fever', 'drycough', 'sorethroat', 'runningnose', 'asthma', 'headache', 'heartdisease', 'diabetes', 'hypertension', 'fatigue', 'abroad', 'contact', 'attended', 'visited', 'fam']
     length = len(list)
+    symptoms_values = []
 
     # Get all values of on checkboxes
     if request.method == 'POST':
@@ -26,7 +27,7 @@ def predictCovidDisease(request):
             symptoms_values.append(0)
 
     new_input = [symptoms_values]
-
+    print(new_input)
     predictedval = reloadCovidModel.predict(new_input)[0]
 
     #converting predicted val to the results name

@@ -2,7 +2,6 @@
 {% load static %}
 {% block content%}
 
-    {{ new_input }}
  <section id="appointment" class="appointment section-bg">
       <div class="container">
          <div class="section-title" id="myform">
@@ -10,7 +9,7 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
          {% if covidval %}
-                <script> window.location.href = "#myform" </script>
+                <script> window.location.href = "#prediction_result" </script>
 
                 <form method="post" enctype="multipart/form-data" action="updateCovidDatabase">
                     {% else %}
@@ -171,7 +170,7 @@
 
 
         {%  if covidval  %}
-         <h1>You are <i><u> {{covidval}} </u></i></h1>
+         <h1 id="prediction_result">You are <i><u> {{covidval}} </u></i></h1>
             If the response is correct, please save it to the database by clicking the button below.
          <a href="/" class="navbar-brand"><i class="fa fa-h-square"></i>Predict Again</a>
          <input type="hidden" id="lname" name="covidVal" value={{predictedval}}>
