@@ -26,4 +26,4 @@ urlpatterns = [
     url('^$', views.index, name='Homepage'),
     url('predict', views.predictCovidDisease, name='predict'),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
