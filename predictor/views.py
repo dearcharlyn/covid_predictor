@@ -27,7 +27,6 @@ def predictCovidDisease(request):
             symptoms_values.append(0)
 
     new_input = [symptoms_values]
-    print(new_input)
     predictedval = reloadCovidModel.predict(new_input)[0]
 
     #converting predicted val to the results name
@@ -36,29 +35,26 @@ def predictCovidDisease(request):
     else:
         covidval = "COVID Negative"
     context = {'covidval': covidval, 'predictedval': predictedval, 'new_input':new_input}#but still recording the predicted val (0,1,2)
-    return render(request, 'index.html', context)
 
-
-def updateCovidDatabase(request):
-    covid = request.POST.get('covidVal')
+    # Save to database
     obj = CovidList()
-    obj.BreathingProblem = symptoms_values[0]
-    obj.Fever = symptoms_values[1]
-    obj.DryCough = symptoms_values[2]
-    obj.Sorethroat = symptoms_values[3]
-    obj.RunningNose = symptoms_values[4]
-    obj.Asthma = symptoms_values[5]
-    obj.Headache = symptoms_values[6]
-    obj.HeartDisease = symptoms_values[7]
-    obj.Diabetes = symptoms_values[8]
-    obj.Hypertension = symptoms_values[9]
-    obj.Fatigue = symptoms_values[10]
-    obj.AbroadTravel = symptoms_values[11]
-    obj.ContactCovidPatient = symptoms_values[12]
-    obj.AttendedLargeGathering = symptoms_values[13]
-    obj.VisitedPublic = symptoms_values[14]
-    obj.FamilyWorkingPublic = symptoms_values[15]
-    obj.covid = covid
+    obj.BreathingProblem = new_input[0][0]
+    obj.Fever = new_input[0][1]
+    obj.DryCough = new_input[0][2]
+    obj.Sorethroat = new_input[0][3]
+    obj.RunningNose = new_input[0][4]
+    obj.Asthma = new_input[0][5]
+    obj.Headache = new_input[0][6]
+    obj.HeartDisease = new_input[0][7]
+    obj.Diabetes = new_input[0][8]
+    obj.Hypertension = new_input[0][9]
+    obj.Fatigue = new_input[0][10]
+    obj.AbroadTravel = new_input[0][11]
+    obj.ContactCovidPatient = new_input[0][12]
+    obj.AttendedLargeGathering = new_input[0][13]
+    obj.VisitedPublic = new_input[0][14]
+    obj.FamilyWorkingPublic = new_input[0][15]
+    obj.covid = predictedval
     obj.save()
 
-    return render(request, 'thankyou.html')
+    return render(request, 'index.html', context)

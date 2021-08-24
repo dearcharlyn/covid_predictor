@@ -168,18 +168,12 @@
      </div>
 </div>
 
-
         {%  if covidval  %}
          <h1 id="prediction_result">You are <i><u> {{covidval}} </u></i></h1>
-            If the response is correct, please save it to the database by clicking the button below.
          <a href="/" class="navbar-brand"><i class="fa fa-h-square"></i>Predict Again</a>
-         <input type="hidden" id="lname" name="covidVal" value={{predictedval}}>
-         <input type="submit" value="Store to database" ></div>
          {% else%}
             <input type="submit" value="Submit" ></div>
          {% endif %}
-
-
 
         </form>
      </div>
