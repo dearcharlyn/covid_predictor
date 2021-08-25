@@ -8,7 +8,7 @@
           <h2>Please Enter Details</h2>
           <p>You're about to use a safe and anonymous COVID-19 predictor based on the symptoms and some information that applies to your current feeling and situation.
               Your answers will be carefully analyzed using a machine learning algorithm trained with previous data. To start, kindly click the
-              following choices after that, click the submit button.
+              following choices after that, click the predict button.
           </p>
         </div>
          {% if covidval %}
@@ -177,9 +177,9 @@
                 <h2>You are <i><b>{{covidval}} </b> </i></h2>
                 <p>Keep Safe.</p>
             </div>
-         <a href="/" class="navbar-brand"><i class="fa fa-h-square"></i>Predict Again</a>
+         <a href="/" class="navbar-brand">Predict Again?</a>
          {% else%}
-            <div class="text-center"><button type="submit">Predict</button></div>
+            <div class="php-email-form text-center" id="predict-button"><button type="submit">Predict</button></div>
          {% endif %}
 
         </form>
