@@ -7,7 +7,7 @@
          <div class="section-title" id="myform">
           <h2>Please Enter Details</h2>
           <p>You're about to use a safe and anonymous COVID-19 predictor based on the symptoms and some information that applies to your current feeling and situation.
-              Your answers will be carefully analyzed using a machine learning algorithm trained with previous data. To start, kindly click the
+              Your answers will be carefully analyzed using a machine learning algorithm. To start, kindly click the
               following choices after that, click the predict button.
           </p>
         </div>
@@ -173,10 +173,23 @@
 <br>
 
         {%  if covidval  %}
-            <div class="section-title" id="prediction_result">
-                <h2>You are <i><b>{{covidval}} </b> </i></h2>
-                <p>Keep Safe.</p>
+            {%  if covidval == "positive"  %}
+            <div class="alert alert-danger" id="prediction_result">
+                <h1 class="bx bxs-error"></h1>
+                <h4>It seems like you need help and potentially  </h4>
+                <h2><u><b> COVID-19 Positive.</b> </u></h2>
+                <p>For your safety, please call your medical provider immediately.</p>
+                <p>To obtain an official PCR test certification, we'd suggest to please follow the usual process and undergo PCR/Swab test.</p>
             </div>
+            {%  else  %}
+            <div class="alert alert-info" id="prediction_result">
+                <h1 class="bx bxs-info-circle"></h1>
+                <h4>You seem fine and </h4>
+                <h2><u><b> COVID-19 Negative.</b> </u></h2>
+                <p>Still kindly observe safety precautions against the virus and be aware of the <a target="_blank" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" class="more-btn">WHO's Advice to the Public.</a></p>
+                <p>To obtain an official PCR test certification, we'd suggest to please follow the usual process and undergo PCR/Swab test.</p>
+            </div>
+            {% endif %}
          <a href="/" class="navbar-brand">Predict Again?</a>
          {% else%}
             <div class="php-email-form text-center" id="predict-button"><button type="submit">Predict</button></div>

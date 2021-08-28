@@ -31,9 +31,9 @@ def predictCovidDisease(request):
 
     #converting predicted val to the results name
     if(predictedval == 1):
-        covidval = "COVID Positive"
+        covidval = "positive"
     else:
-        covidval = "COVID Negative"
+        covidval = "negative"
     context = {'covidval': covidval, 'predictedval': predictedval, 'new_input':new_input}#but still recording the predicted val (0,1,2)
 
     # Save to database
